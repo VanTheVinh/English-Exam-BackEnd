@@ -10,7 +10,9 @@ userRouter
 
 userRouter
     .route("/:id")
-    .get(middlewares.verifyJwt(), userController.getOneUser);
+    .get(middlewares.verifyJwt(), userController.getOneUser)
+    .put(userController.updateUser, middlewares.verifyJwt())
+    .delete(userController.deleteUser, middlewares.verifyJwt());
 
 userRouter.post("/login", validateLoginRequest, userController.login);
 userRouter.post("/logout", userController.logout);
