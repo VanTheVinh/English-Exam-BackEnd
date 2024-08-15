@@ -5,6 +5,7 @@ import examModel from "../models/exam.model.js";
 import questionModel from "../models/question.model.js";
 
 const calculateScore = async (examId, answers) => {
+  //VD:
   //answers = [
     //   {
     //     questionId: "question1_id",
