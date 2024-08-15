@@ -41,7 +41,7 @@ const userController = {
         avatar,
         role,
       });
-
+      
       res.status(201).json({
         data: createdUser,
         message: "Tạo tài khoản thành công",

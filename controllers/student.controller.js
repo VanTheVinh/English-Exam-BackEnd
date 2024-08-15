@@ -41,7 +41,7 @@ export const getAllStudents = async (req, res) => {
       return res.status(500).json({ message: "Internal Server Error" });
     }
   };
-
+//profile
 export const getStudentById = async (req, res) => {
   try {
     const { id } = req.params;
