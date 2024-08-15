@@ -1,5 +1,5 @@
 import classModel from "../models/class.model.js";
-
+//crud classgit checkout -b EEWEB-109-implement-add-edit-class-functionality
 export const createClass = async (req, res) => {
   try {
     const { classCode, className } = req.body;
