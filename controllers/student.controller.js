@@ -1,5 +1,5 @@
 import studentModel from "../models/student.model.js";
-
+//crud studentgit checkout -b EEWEB-111-implement-add-edit-delete-student-functionality
 export const createStudent = async (req, res) => {
   try {
     const { studentId, studentCode, classId } = req.body;
