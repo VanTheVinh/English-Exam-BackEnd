@@ -119,7 +119,7 @@ const userController = {
       res.status(500).json({ message: error.message });
     }
   },
-
+//changePassword
   updateUser: async (req, res) => {
     try {
       const { id } = req.params;
