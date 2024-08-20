@@ -42,7 +42,7 @@ const userController = {
         avatar,
         role,
       });
-
+      
       res.status(201).json({
         data: createdUser,
         message: "Tạo tài khoản thành công",
@@ -120,7 +120,7 @@ const userController = {
       res.status(500).json({ message: error.message });
     }
   },
-
+//changePassword
   updateUser: async (req, res) => {
     try {
       const { id } = req.params;
