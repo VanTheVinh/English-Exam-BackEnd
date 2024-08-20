@@ -4,6 +4,7 @@ import {
   createExam,
   deleteExam,
   getExamById,
+  getExamsByClassId,
   submitExam,
   updateExam,
 } from "../controllers/exam.controller.js";
@@ -13,6 +14,8 @@ const examRouter = express.Router();
 examRouter.route("/").post(createExam);
 
 examRouter.route("/:id").get(getExamById).put(updateExam).delete(deleteExam);
+
+examRouter.route("/class/:classId").get(getExamsByClassId);
 
 examRouter.route("/submit").post(submitExam);
 

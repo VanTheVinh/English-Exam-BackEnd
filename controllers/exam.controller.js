@@ -5,27 +5,25 @@ import examModel from "../models/exam.model.js";
 import questionModel from "../models/question.model.js";
 
 const calculateScore = async (examId, answers) => {
-  //answers = [
-    //   {
-    //     questionId: "question1_id",
-    //     answer: "Answer A"
-    //   },
-    //   {
-    //     questionId: "question2_id",
-    //     answer: "Answer B"
-    //   },
-    // ];
+  // Lấy tất cả câu hỏi cho examId
   const questions = await questionModel.find({ examId });
-  
+
   let correctAnswers = 0;
 
+  // Duyệt qua từng câu hỏi
   questions.forEach(question => {
-    const studentAnswer = answers.find(answer => answer.questionId === question.id);
-    if (studentAnswer && question.questionAnswers.some(q => q.isCorrect && q.answerText === studentAnswer.answer)) {
-      correctAnswers++;
+    // Tìm câu trả lời của sinh viên cho câu hỏi hiện tại
+    const studentAnswer = answers.find(answer => answer.questionId.toString() === question._id.toString());
+    if (studentAnswer) {
+      // Kiểm tra xem câu trả lời của sinh viên có khớp với câu trả lời đúng không
+      const isCorrect = question.questionAnswers.some(q => q.isCorrect && q.answerText === studentAnswer.answer);
+      if (isCorrect) {
+        correctAnswers++;
+      }
     }
   });
 
+  // Tính điểm số
   const score = (correctAnswers / questions.length) * 100;
   return score;
 };
@@ -33,40 +31,37 @@ const calculateScore = async (examId, answers) => {
 export const submitExam = async (req, res) => {
   try {
     const { studentId, examId, answers } = req.body;
-    
-    const exam = await examModel.findById( examId );
+    const exam = await examModel.findById(examId);
 
     if (!exam) {
       return res.status(404).json({ message: "Exam not found" });
     }
 
-    if (exam.status === "completed") {
-      return res.status(403).json({ message: "This exam has already been completed and cannot be submitted again." });
-    }
-    if(exam){
-      const resultExist= await resultModel.findOne( {studentId} );
-      if(resultExist){
-        return res.status(403).json({ message: "Already submitted." });
-      }
-    }
     const score = await calculateScore(examId, answers);
+    const now = new Date();
+    const dateTaken = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), 0, 0).toISOString();
 
     const result = new resultModel({
       studentId,
       examId,
       score,
-      dateTaken: new Date(),
+      dateTaken, 
       submitted: true,
     });
 
     await result.save();
 
+    // Update exam status to 'completed'
+    exam.status = 'completed';
+    await exam.save();
+
     return res.status(200).json({ message: "Exam submitted successfully.", score });
   } catch (error) {
-    console.error("Error during exam submission:", error);
+    console.error("Error during exam submission:", error.message || error);
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
 
 export const autoSubmitExam = async (examId) => {
   try {
@@ -97,7 +92,6 @@ export const autoSubmitExam = async (examId) => {
       });
 
       await result.save();
-
       
     }
     exam.status = "completed";
@@ -154,6 +148,25 @@ export const getExamById = async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+export const getExamsByClassId = async (req, res) => {
+  try {
+    const { classId } = req.params;
+
+    // Find all exams that match the provided classId
+    const exams = await examModel.find({ classId });
+
+    if (exams.length === 0) {
+      return res.status(404).json({ message: "No exams found for this class." });
+    }
+
+    return res.status(200).json({ exams });
+  } catch (error) {
+    console.error("Error retrieving exams by classId:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
 
 export const updateExam = async (req, res) => {
   try {

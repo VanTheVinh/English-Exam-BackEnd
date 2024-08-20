@@ -1,3 +1,4 @@
+// result.model.js
 import mongoose from "mongoose";
 
 const ResultSchema = mongoose.Schema(
