@@ -3,8 +3,9 @@ import studentModel from "../models/student.model.js";
 import resultModel from "../models/result.model.js";
 import examModel from "../models/exam.model.js";
 import questionModel from "../models/question.model.js";
-
+//crud exam 
 const calculateScore = async (examId, answers) => {
+  //VD:
   //answers = [
     //   {
     //     questionId: "question1_id",

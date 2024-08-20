@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import examModel from "../models/exam.model.js";
 import questionModel from "../models/question.model.js";
 import { autoSubmitExam } from "../controllers/exam.controller.js";
-
+//crud questions
 export const createQuestion = async (req, res) => {
   try {
     const { examId, questionText, difficulty, questionAnswers } = req.body;

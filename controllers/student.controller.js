@@ -1,5 +1,5 @@
 import studentModel from "../models/student.model.js";
-
+//crud studentgit checkout -b EEWEB-111-implement-add-edit-delete-student-functionality
 export const createStudent = async (req, res) => {
   try {
     const { studentId, studentCode, classId } = req.body;
@@ -41,7 +41,7 @@ export const getAllStudents = async (req, res) => {
       return res.status(500).json({ message: "Internal Server Error" });
     }
   };
-
+//profile
 export const getStudentById = async (req, res) => {
   try {
     const { id } = req.params;
