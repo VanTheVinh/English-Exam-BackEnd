@@ -108,7 +108,21 @@ export const getQuestionById = async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+export const getQuestions = async (req, res) => {
+  try {
 
+    const question = await questionModel.find();
+
+    if (!question) {
+      return res.status(404).json({ message: "Question not found" });
+    }
+
+    return res.status(200).json({ question });
+  } catch (error) {
+    console.error("Error retrieving question:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
 export const updateQuestion = async (req, res) => {
   try {
     const { id } = req.params;

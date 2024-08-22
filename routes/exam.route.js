@@ -7,11 +7,12 @@ import {
   getExamsByClassId,
   submitExam,
   updateExam,
+  getExams
 } from "../controllers/exam.controller.js";
 
 const examRouter = express.Router();
 
-examRouter.route("/").post(createExam);
+examRouter.route("/").get(getExams).post(createExam);
 
 examRouter.route("/:id").get(getExamById).put(updateExam).delete(deleteExam);
 
