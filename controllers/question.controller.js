@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import examModel from "../models/exam.model.js";
 import questionModel from "../models/question.model.js";
 import { autoSubmitExam } from "../controllers/exam.controller.js";
-
+//crud questions
 export const createQuestion = async (req, res) => {
   try {
     const { examId, questionText, difficulty, questionAnswers } = req.body;
@@ -49,14 +49,14 @@ export const createQuestion = async (req, res) => {
 
 export const getQuestionsByExam = async (req, res) => {
   try {
-    const { examId } = req.body;
+    const { examId } = req.params;
     const exam = await examModel.findById( examId );
 
     if (!exam) {
       return res.status(404).json({ message: "Exam not found" });
     }
 
-    const questions = await questionModel.find();
+    const questions = await questionModel.find({ examId });
 
     if (questions.length == exam.questionCount) {
     //   setTimeout(async () => {
@@ -95,7 +95,21 @@ export const getQuestionById = async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+export const getQuestions = async (req, res) => {
+  try {
 
+    const question = await questionModel.find();
+
+    if (!question) {
+      return res.status(404).json({ message: "Question not found" });
+    }
+
+    return res.status(200).json({ question });
+  } catch (error) {
+    console.error("Error retrieving question:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
 export const updateQuestion = async (req, res) => {
   try {
     const { id } = req.params;

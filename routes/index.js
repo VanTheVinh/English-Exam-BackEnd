@@ -4,6 +4,7 @@ import studentRouter from "./student.route.js";
 import examRouter from "./exam.route.js";
 import questionRouter from "./question.route.js";
 import resultRouter from "./result.route.js";
+import teacherRouter from "./teacher.route.js";
 
 const routes = [
   {
@@ -30,6 +31,10 @@ const routes = [
     path: "/result",
     router: resultRouter,
   },
+  {
+    path: "/teacher",
+    router: teacherRouter,
+  },
 ];
 
 export function routeFactory(app) {
@@ -50,6 +55,9 @@ export function routeFactory(app) {
       app.use(route.path, route.router);
     }
     if (route.path === "/result") {
+      app.use(route.path, route.router);
+    }
+    if (route.path === "/teacher") {
       app.use(route.path, route.router);
     }
   });

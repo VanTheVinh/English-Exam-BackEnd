@@ -3,8 +3,9 @@ import studentModel from "../models/student.model.js";
 import resultModel from "../models/result.model.js";
 import examModel from "../models/exam.model.js";
 import questionModel from "../models/question.model.js";
-
+//crud exam 
 const calculateScore = async (examId, answers) => {
+  //VD:
   //answers = [
     //   {
     //     questionId: "question1_id",
@@ -137,7 +138,20 @@ export const createExam = async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+export const getExams= async (req, res) => {
+  try {
+    const exam = await examModel.find();
 
+    if (!exam) {
+      return res.status(404).json({ message: "Exam not found" });
+    }
+
+    return res.status(200).json({ exam });
+  } catch (error) {
+    console.error("Error retrieving exam:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
 export const getExamById = async (req, res) => {
   try {
     const { id } = req.params;
