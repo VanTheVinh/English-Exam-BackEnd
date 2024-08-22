@@ -50,29 +50,18 @@ export const createQuestion = async (req, res) => {
 
 export const getQuestionsByExam = async (req, res) => {
   try {
-    const { examId } = req.body;
-    const exam = await examModel.findById( examId );
+    // Lấy examId từ chuỗi truy vấn
+    const { examId } = req.query;
 
-    if (!exam) {
-      return res.status(404).json({ message: "Exam not found" });
+    // Kiểm tra nếu examId không có
+    if (!examId) {
+      return res.status(400).json({ message: 'Exam ID is required.' });
     }
 
-    const questions = await questionModel.find();
+    // Lọc các câu hỏi theo examId
+    const questions = await questionModel.find({ examId });
 
-    if (questions.length == exam.questionCount) {
-    //   setTimeout(async () => {
-    //     await autoSubmitExam(examId);
-    //   }, exam.duration);
-      return res.status(200).json({ questions });
-    }
-
-    if (questions.length !== exam.questionCount) {
-      return res.status(400).json({
-        message: `Expected ${exam.questionCount} questions but found ${questions.length}`,
-        questions,
-      });
-    }
-
+    // Trả về danh sách câu hỏi
     return res.status(200).json({ questions });
 
     // if (!examId) {
