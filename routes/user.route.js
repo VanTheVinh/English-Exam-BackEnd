@@ -1,3 +1,4 @@
+// user.route.js
 import express from "express";
 import userController from "../controllers/user.controller.js";
 import middlewares from "../middlewares/user.middleware.js";

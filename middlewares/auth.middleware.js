@@ -1,3 +1,4 @@
+// auth.middleware.js
 import Joi from "joi";
 import { getErrorMessages } from "../utils/validation.util.js";
 

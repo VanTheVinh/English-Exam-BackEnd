@@ -1,21 +1,22 @@
+// result.controller.js
 import mongoose from "mongoose";
 import resultModel from "../models/result.model.js";
 
 export const createResult = async (req, res) => {
   try {
-    const { studentId, examId, score, dateTaken, submitted } = req.body;
+    const { studentId, examId, score, submitted } = req.body;
+    const dateTaken = new Date();
 
-    const result = await resultModel.findOne({ studentId, examId });
-
-    if (result) {
-      return res.status(404).json({ message: "Question existed!" });
+    const existingResult = await resultModel.findOne({ studentId, examId });
+    if (existingResult) {
+      return
     }
 
     const newResult = new resultModel({
       studentId,
       examId,
       score,
-      dateTaken: new Date(),
+      dateTaken, 
       submitted,
     });
 
@@ -26,10 +27,10 @@ export const createResult = async (req, res) => {
       result: newResult,
     });
   } catch (error) {
-    console.error("Error creating result:", error);
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
 
 export const getAllResults = async (req, res) => {
   try {
@@ -104,3 +105,21 @@ export const deleteResult = async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+export const deleteAllResults = async (req, res) => {
+  try {
+    // Xóa tất cả các kết quả
+    const result = await resultModel.deleteMany({});
+
+    // Kiểm tra nếu không có kết quả nào bị xóa
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ message: "No results found to delete" });
+    }
+
+    return res.status(200).json({ message: "All results deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting results:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+

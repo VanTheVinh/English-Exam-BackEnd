@@ -4,6 +4,7 @@ import {
   createExam,
   deleteExam,
   getExamById,
+  getExamsByClassId,
   submitExam,
   updateExam,
   getExams
@@ -14,6 +15,8 @@ const examRouter = express.Router();
 examRouter.route("/").get(getExams).post(createExam);
 
 examRouter.route("/:id").get(getExamById).put(updateExam).delete(deleteExam);
+
+examRouter.route("/class/:classId").get(getExamsByClassId);
 
 examRouter.route("/submit").post(submitExam);
 

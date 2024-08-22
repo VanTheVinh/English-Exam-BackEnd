@@ -18,5 +18,4 @@ questionRouter
   .put(updateQuestion)
   .delete(deleteQuestion);
 
-questionRouter.route("/exam/:examId").get(getQuestionsByExam);
 export default questionRouter;

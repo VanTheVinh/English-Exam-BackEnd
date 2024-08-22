@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import examModel from "../models/exam.model.js";
 import questionModel from "../models/question.model.js";
 import { autoSubmitExam } from "../controllers/exam.controller.js";
-//crud questions
+//crud get,post, put questions 
 export const createQuestion = async (req, res) => {
   try {
     const { examId, questionText, difficulty, questionAnswers } = req.body;
@@ -47,16 +47,17 @@ export const createQuestion = async (req, res) => {
   }
 };
 
+
 export const getQuestionsByExam = async (req, res) => {
   try {
-    const { examId } = req.params;
+    const { examId } = req.body;
     const exam = await examModel.findById( examId );
 
     if (!exam) {
       return res.status(404).json({ message: "Exam not found" });
     }
 
-    const questions = await questionModel.find({ examId });
+    const questions = await questionModel.find();
 
     if (questions.length == exam.questionCount) {
     //   setTimeout(async () => {
@@ -73,11 +74,34 @@ export const getQuestionsByExam = async (req, res) => {
     }
 
     return res.status(200).json({ questions });
+
+    // if (!examId) {
+    //   return res.status(400).json({ message: "examId is required" });
+    // }
+
+    // const exam = await examModel.findById(examId);
+
+    // if (!exam) {
+    //   return res.status(404).json({ message: "Exam not found" });
+    // }
+
+    // if (questions.length === 0) {
+    //   return res.status(404).json({ message: "No questions found for this exam" });
+    // }
+
+    // if (questions.length !== exam.questionCount) {
+    //   return res.status(400).json({
+    //     message: `Expected ${exam.questionCount} questions but found ${questions.length}`,
+    //     questions,
+    //   });
+    // }
+
   } catch (error) {
     console.error("Error retrieving questions:", error);
     return res.status(500).json({ message: "Server Error" });
   }
 };
+
 
 export const getQuestionById = async (req, res) => {
   try {

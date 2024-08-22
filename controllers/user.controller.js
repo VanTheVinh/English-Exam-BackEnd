@@ -1,3 +1,4 @@
+// user.controller.js
 import userModel from "../models/user.model.js";
 import studentModel from "../models/student.model.js";
 import teacherModel from "../models/teacher.model.js";
