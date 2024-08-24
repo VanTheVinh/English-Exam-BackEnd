@@ -8,7 +8,7 @@ Phần backend cung cấp API cho các chức năng của học sinh và giáo v
 ### Chức năng chung
 - **Xác thực và phân quyền người dùng**: Hỗ trợ đăng nhập, đăng xuất và bảo vệ các route cần thiết thông qua middleware xác thực.
 - **Quản lý dữ liệu**: Xử lý các yêu cầu CRUD (Tạo, Đọc, Cập nhật, Xóa) cho các tài nguyên như lớp học, học sinh, bài thi, câu hỏi, và kết quả thi.
-- 
+  
 ### Học sinh
 - **Truy cập bài thi**: Sau khi đăng nhập thành công, học sinh có thể nhận danh sách bài thi từ API.
 - **Làm bài thi**: Hiện danh sách câu hỏi từ API.
