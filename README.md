@@ -46,24 +46,11 @@ Phần backend cung cấp API cho các chức năng của học sinh và giáo v
    cd English-Exam-BackEnd
    ```
 - Gõ lệnh `npm i` để cài đặt tất cả các gói cần thiết cho dự án
-
-- Nếu không có lỗi gì gõ tiếp lệnh `npm start` để chạy dự án
-- Chạy thành công Folder Back-end, ở terminal sẽ giống ảnh bên dưới
-
-<img src="https://i.imgur.com/afZl21U.png" alt="image info" style="width:400px; margin-left:24px;"/>
-
-- Mở một terminal mới dẫn tới Folder chứa mã nguồn dự án (English Exam) để tải mã nguồn Back-end
-   ```bash
-   git clone https://github.com/VanTheVinh/English-Exam-BackEnd.git
-- Di chuyển tới thư mục chứa mã nguồn
-   ```bash
-   cd English-Exam-BackEnd
-   ```
-- Gõ lệnh `npm i` để cài đặt tất cả các gói cần thiết cho dự án
 - Nếu không có lỗi gì gõ tiếp lệnh `npm start` để chạy dự án
 - Chạy thành công Folder Back-end, ở terminal sẽ giống ảnh bên dưới
 
 <img src="https://i.imgur.com/7KeZAIL.png" alt="image info" style="width:400px; margin-left:24px;"/>
 
-- Sau khi chạy thành công Back-end và Back-end hệ thống sẽ tự động chuyển tới trình duyệt, nếu không bạn hãy lên trình duyệt với đường dẫn http://localhost:3000/
+- Sau khi chạy thành công Back-end hệ thống sẽ tự chạy trên http://localhost:8000/, đường dẫn nối trình duyệt là http://localhost:3000/
+- Dùng Postman để kiểm tra các API, link tải Postman (https://www.postman.com/downloads/)
 
