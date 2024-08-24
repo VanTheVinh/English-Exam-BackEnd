@@ -21,49 +21,49 @@ Phần backend cung cấp API cho các chức năng của học sinh và giáo v
 - **Quản lý ngân hàng câu hỏi**: Hỗ trợ tạo mới, sửa, và xóa câu hỏi cho các bài thi thông qua API.
   
 > ## Cài đặt và chạy dự án
-1.Tạo một thư mục trống chứa mã nguồn dự án backend (Ví dụ: English-Exam-BackEnd).
-2.Mở thư mục vừa tạo trên VS Code.
-3.Mở Terminal và kiểm tra xem Git và Node.js đã được cài đặt chưa.
+1. Tạo thư mục trống chứa mã nguồn dự án (Ví dụ: English Exam)
+2. Mở thư mục vừa tạo trên VS Code
+3. Mở Terminal 
+- Gõ lệnh `git -v`, sẽ sang bước tiếp theo nếu kết quả là:
 
-Gõ lệnh git -v, nếu kết quả trả về như bên dưới, chuyển sang bước tiếp theo:
-bash
-Copy code
-git version 2.46.0.windows.1 (Hoặc các phiên bản khác)
-Nếu Git chưa được cài đặt, tải Git tại Git download.
+   ```bash
+   git version 2.46.0.windows.1 (Hoặc các phiên bản khác)
+   ```
+   Nếu không bạn cần đến trang [Git download](https://git-scm.com/downloads) để tải phiên bản Git về máy.
+- Gõ lệnh `node -v`, sẽ sang bước tiếp theo nếu kết quả là:
 
-Gõ lệnh node -v, nếu kết quả trả về như bên dưới, chuyển sang bước tiếp theo:
-bash
-Copy code
-v20.16.0
-Nếu Node.js chưa được cài đặt, tải Node.js tại Node.js version 20.
+   ```bash
+   v20.16.0
+   ```
+   Nếu không hãy vào trang [Node.js version 20](https://nodejs.org/dist/v20.17.0/node-v20.17.0-x64.msi) để tải Node về máy.
+- Gõ lệnh `git init` để khởi tạo một Repository Git mới trong thư mục hiện tại
+4. Clone Repository từ Github về máy
+- Sau lệnh khởi tạo Repository Git, tiếp tục gõ lệnh:
+   ```bash
+   git clone https://github.com/VanTheVinh/English-Exam-BackEnd.git
+- Di chuyển tới thư mục chứa mã nguồn
+   ```bash
+   cd English-Exam-BackEnd
+   ```
+- Gõ lệnh `npm i` để cài đặt tất cả các gói cần thiết cho dự án
 
-Khởi tạo một Repository Git mới:
+- Nếu không có lỗi gì gõ tiếp lệnh `npm start` để chạy dự án
+- Chạy thành công Folder Back-end, ở terminal sẽ giống ảnh bên dưới
 
-bash
-Copy code
-git init
-Clone Repository từ GitHub về máy:
+<img src="https://i.imgur.com/afZl21U.png" alt="image info" style="width:400px; margin-left:24px;"/>
 
-bash
-Copy code
-git clone https://github.com/VanTheVinh/English-Exam-BackEnd.git
-Di chuyển vào thư mục chứa mã nguồn:
-
-bash
-Copy code
-cd English-Exam-BackEnd
-Cài đặt các gói cần thiết:
-
-bash
-Copy code
-npm i
-Khởi chạy dự án:
-
-bash
-Copy code
-npm start
-Nếu chạy thành công, terminal sẽ giống như hình dưới đây:
+- Mở một terminal mới dẫn tới Folder chứa mã nguồn dự án (English Exam) để tải mã nguồn Back-end
+   ```bash
+   git clone https://github.com/VanTheVinh/English-Exam-BackEnd.git
+- Di chuyển tới thư mục chứa mã nguồn
+   ```bash
+   cd English-Exam-BackEnd
+   ```
+- Gõ lệnh `npm i` để cài đặt tất cả các gói cần thiết cho dự án
+- Nếu không có lỗi gì gõ tiếp lệnh `npm start` để chạy dự án
+- Chạy thành công Folder Back-end, ở terminal sẽ giống ảnh bên dưới
 
 <img src="https://i.imgur.com/7KeZAIL.png" alt="image info" style="width:400px; margin-left:24px;"/>
-Kết nối với Frontend
-Sau khi chạy thành công cả Frontend và Backend, hệ thống sẽ tự động mở trình duyệt với địa chỉ http://localhost:3000. Nếu không, bạn có thể mở trình duyệt và nhập URL này để truy cập trang web.
+
+- Sau khi chạy thành công Back-end và Back-end hệ thống sẽ tự động chuyển tới trình duyệt, nếu không bạn hãy lên trình duyệt với đường dẫn http://localhost:3000/
+
