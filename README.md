@@ -51,6 +51,6 @@ Phần backend cung cấp API cho các chức năng của học sinh và giáo v
 
 <img src="https://i.imgur.com/7KeZAIL.png" alt="image info" style="width:400px; margin-left:24px;"/>
 
-- Sau khi chạy thành công Back-end hệ thống sẽ tự chạy trên http://localhost:8000/, đường dẫn nối trình duyệt là http://localhost:3000/
+- Sau khi chạy thành công Back-end hệ thống sẽ tự chạy trên http://localhost:8000/, đường dẫn nối trình duyệt Front-End là http://localhost:3000/
 - Dùng Postman để kiểm tra các API, link tải Postman (https://www.postman.com/downloads/)
 
