@@ -14,12 +14,12 @@ Phần backend cung cấp API cho các chức năng của học sinh và giáo v
 - **Làm bài thi**: Hiện danh sách câu hỏi từ API.
 - **Nộp bài**: Sau khi nộp bài, hệ thống sẽ tính điểm và lưu kết quả vào cơ sở dữ liệu.
 - **Xem điểm**: Học sinh có thể sử dụng API để lấy lịch sử thi và xem điểm số của mình.
-- 
+  
 ### Giáo viên
 - **Quản lý lớp học**: API hỗ trợ các thao tác thêm, sửa, xóa, và xem thông tin chi tiết của lớp học.
 - **Quản lý bài thi**: Giáo viên có thể tạo, chỉnh sửa, và xóa bài thi thông qua API.
 - **Quản lý ngân hàng câu hỏi**: Hỗ trợ tạo mới, sửa, và xóa câu hỏi cho các bài thi.
-- 
+  
 > ## Cài đặt và chạy dự án
 1.Tạo một thư mục trống chứa mã nguồn dự án backend (Ví dụ: English-Exam-BackEnd).
 2.Mở thư mục vừa tạo trên VS Code.
