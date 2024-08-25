@@ -4,7 +4,7 @@
 English Exam Web - Backend là một phần của hệ thống English Exam Web, hỗ trợ quản lý và xử lý dữ liệu cho trang web thi tiếng Anh.
 Phần backend cung cấp API cho các chức năng của học sinh và giáo viên, như quản lý lớp học, bài thi, câu hỏi và kết quả thi.
 
-> ## Các chức năng chínhCác chức năng chính
+> ## Các chức năng chính
 ### Chức năng chung
 - **Xác thực và phân quyền người dùng**: Hỗ trợ đăng nhập, đăng xuất và bảo vệ các route cần thiết thông qua middleware xác thực.
 - **Quản lý dữ liệu**: Xử lý các yêu cầu CRUD (Tạo, Đọc, Cập nhật, Xóa) cho các tài nguyên như lớp học, học sinh, bài thi, câu hỏi, và kết quả thi.
